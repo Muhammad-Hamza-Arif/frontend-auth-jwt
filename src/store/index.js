@@ -9,13 +9,13 @@ export default createStore({
     }
   },
   getters: {
-    getMovieList(state){
-      return state.movie.allMovies
+    getMovieList(state) {
+      return state.movie.allMovies;
     }
   },
   mutations: {
-    SET_MOVIES(state,payload){
-    state.movie.allMovies=payload
+    SET_MOVIE_LIST(state, payload) {
+      state.movie.allMovies = payload;
     }
   },
   actions: {
@@ -37,7 +37,7 @@ export default createStore({
       const response = await axios.get('http://localhost:3000/users/getallusers')
       console.log(response.data)
     },
-    async createMovies({commit}, payload) {
+    async createMovies(_, payload) {
       try {
         const token = this.state.movie.token;
         console.log('token---->', token)
@@ -47,11 +47,28 @@ export default createStore({
             'Content-Type': 'application/json'
           }
         };
-        const { data } = await axios.post('http://localhost:3000/movies', payload, config);
-        console.log('Movie created:', data);
-        commit('SET_MOVIES',data)
+        const res = await axios.post('http://localhost:3000/movies', payload, config);
+        console.log('Movie created:', res);
       } catch (error) {
         console.error('Error creating movie:', error);
+      }
+    },
+    async fetchMovies({commit}) {
+      try {
+        
+        const token = this.state.movie.token;
+        console.log('token in the fetch----> ', token)
+        const config = {
+          headers: {
+            'x-access-token': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        };
+        const { data } = await axios.get('http://localhost:3000/movies',config);
+        console.log('data in action: (looking for _id) ', data)
+        commit('SET_MOVIE_LIST', data.data.movies);
+      } catch (error) {
+        console.error('Error fetching movies:', error);
       }
     }
   },
