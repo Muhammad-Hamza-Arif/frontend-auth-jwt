@@ -9,7 +9,7 @@
                 <p> id:{{ movie.id }}</p>
             </div>
             <button class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600" >Edit</button>
-            <button class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600" >Del</button>
+            <button @click="deleteMovie(index, movie.id)" class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600" >Delete</button>
         </div>
     </div>
 </template>
@@ -24,6 +24,12 @@ export default {
     },
     methods: {
         ...mapActions({ allMovies: 'fetchMovies' }),
+        ...mapActions({delete:"deleteMovie"}),
+        deleteMovie(index, id) {
+            console.log("id to be del:  ", id);
+            const obj = { index: index, id: id };
+            this.delete(obj);
+        }
     },
     computed: {
         ...mapGetters({ movies: 'getMovieList' }),
