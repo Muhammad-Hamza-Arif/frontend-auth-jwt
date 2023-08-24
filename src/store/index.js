@@ -120,7 +120,6 @@ export default createStore({
     async updateMovies({commit}, { indx, updateMovie }) {
       console.log('idObj: ', indx)
       console.log('PAyloaad : ',updateMovie)
-      commit('UPDATE_MOVIE', {id: indx , data: updateMovie})
       try {
         const token = this.state.token;
         // console.log('token---->', token)
@@ -131,7 +130,7 @@ export default createStore({
           }
 
         };
-        await axios.put(`http://localhost:3000/movies/${indx}`, updateMovie, config);
+  await axios.put(`http://localhost:3000/movies/${indx}`, updateMovie, config);
         // console.log('Movie updated:', data.data.movies);
         // commit('SET_MOVIE_LIST', data.data.movies)
       } catch (error) {

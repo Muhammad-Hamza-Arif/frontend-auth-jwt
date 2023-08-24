@@ -36,10 +36,10 @@ export default{
   },
   methods: {
     ...mapActions(["updateMovies"]),
-    updateMovieInStore() {
+    async updateMovieInStore() {
       console.log("route params ", this.$route.params.id);
       console.log("in the edit movie ---->", this.id, this.editedMovie);
-      this.updateMovies({ indx: this.id, updateMovie: this.editedMovie });
+      await this.updateMovies({ indx: this.id, updateMovie: this.editedMovie });
       router.push("/allmovies");
     },
   },
