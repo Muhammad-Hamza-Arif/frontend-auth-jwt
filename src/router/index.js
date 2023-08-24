@@ -6,15 +6,21 @@ import AddMovies from "../components/AddMovies.vue"
 import AllMovies from "../components/AllMovies.vue"
 import EditMovie from "../components/EditMovie.vue"
 import ChangePassword from "../components/ChangePassword.vue"
+import UserCreation from "../components/UserCreation.vue"
 
 const routes = [
   {
-    path: '/',
+    path: '/register',
     name: 'register',
     component: Register
   },
   {
-    path: '/authenticate',
+    path: '/usercreation',
+    name: 'usercreation',
+    component: UserCreation
+  },
+  {
+    path: '/',
     name: 'userAuthenticate',
     component: Login
   },

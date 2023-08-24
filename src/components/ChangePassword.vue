@@ -1,19 +1,24 @@
 <template>
+    <div class="flex justify-center items-center h-screen bg-indigo-500">
     <form action="" @submit.prevent="ChangePassword" class="max-w-sm mx-auto">
-        <div class="mb-4">
-                <label for="name" class="block text-gray-700 font-semibold">Change Password</label>
-                <input v-model="password" type="password" id="name" name="name"
-                    class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500">
+        <div class="w-96 p-6 shadow-lg bg-white rounded-md">
+            <h1 class="text-3xl block font-semibold text-center">
+                Create New Password
+      </h1>
+      <hr class="mt-3">
+      <div class="mt-3">
+                <label for="password" class="block text-base mb-2">Password</label>
+                <input v-model="password" type="password" id="password"
+                class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+          placeholder="Enter New Password...">
             </div>
-            <div>
+            <div class="mt-3">
                 <button
-              type="submit"
-              class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600"
-            >
-              Confirm Password
-            </button>
+                class="border-2 border-indigo-700 bg-indigo-700 text-white px-4 py-2 rounded-md w-full">Submit</button>
+            </div>
             </div>
     </form>
+</div>
 </template>
 
 <script>
@@ -33,7 +38,7 @@ import router from '@/router'
             const obj = { 'id': store.state.userId, 'newPassword': this.password }
             console.log('obj as payload>>>>>>',obj)
             this.updatePassword(obj)
-            router.push("/allmovies")
+            router.push("/usercreation")
         }
     }
     }

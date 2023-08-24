@@ -1,21 +1,31 @@
 <template>
-    <div class="min-h-screen flex items-center justify-center">
-        <form class="bg-white p-8 shadow-md rounded-md" @submit.prevent="updateMovieInStore">
-            <h2 class="text-2xl mb-4">Add a Movie</h2>
-            <div class="mb-4">
-                <label for="name" class="block text-gray-700 font-semibold">Name</label>
+    <div class="flex justify-center items-center h-screen bg-indigo-500">
+        <form class="w-96 p-6 shadow-lg bg-white rounded-md" @submit.prevent="updateMovieInStore">
+            <h2 class="text-3xl block font-semibold text-center">Update Movie</h2>
+            <hr class="mt-3">
+            <div class="mt-3">
+                <label for="name" class="block text-base mb-2">Name</label>
                 <input v-model="editedMovie.name" type="text" id="name" name="name"
-                    class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500">
+                class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600"
+          placeholder="Enter Movie Name...">
             </div>
-            <div class="mb-4">
-                <label for="released_on" class="block text-gray-700 font-semibold">Released On</label>
-                <input v-model="editedMovie.released_on" type="date" id="released_on" name="released_on"
-                    class="w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:border-indigo-500">
+            <div class="mt-3">
+                <label for="date" class="block text-base mb-2">Released On</label>
+                <input v-model="editedMovie.released_on" type="date" id="date" name="released_on"
+                class="border w-full text-base px-2 py-1 focus:outline-none focus:ring-0 focus:border-gray-600">
             </div>
-            <div>
+            <div class="mt-3">
                 <button type="submit"
-                    class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">Update Movie</button>
+                class="border-2 border-indigo-700 bg-indigo-700 text-white px-4 py-2 rounded-md w-full">Submit</button>
             </div>
+            <!-- <router-link to="/allmovies">
+
+                <div>
+            <button type="submit"
+                class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">All
+                Movies</button>
+        </div>
+            </router-link> -->
         </form>
     </div>
 </template>

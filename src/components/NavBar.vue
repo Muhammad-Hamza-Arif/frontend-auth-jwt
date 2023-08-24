@@ -1,6 +1,6 @@
 <template>
-    <div class="flex justify-between bg-gray-400 p-10 h-14 items-center font-bold">
-       <div>Website</div>
+    <div class="flex justify-between p-10 h-14 items-center text-2xl font-serif font-medium bg-indigo-500 text-white">
+       <router-link to="/">Movies</router-link>
         <button @click="changePassword(id)">Change Password</button>
     </div>
 </template>
