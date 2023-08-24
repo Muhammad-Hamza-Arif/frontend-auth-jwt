@@ -1,5 +1,4 @@
 <template>
-    <p>heyy</p>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
         <!-- Loop through the list of movies -->
         <div v-for="(item,index) in movies" :key="index" class="bg-white shadow-md rounded-md overflow-hidden">

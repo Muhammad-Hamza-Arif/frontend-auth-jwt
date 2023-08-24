@@ -1,4 +1,5 @@
 <template>
+    <NavBar/>
     <div class="min-h-screen flex items-center justify-center">
         <form class="bg-white p-8 shadow-md rounded-md" @submit.prevent="addMovie">
             <h2 class="text-2xl mb-4">Add a Movie</h2>
@@ -31,8 +32,12 @@
 
 <script>
 import { mapActions } from 'vuex';
+import NavBar from './NavBar.vue';
 export default {
     name:'AddMovies',
+    components:{
+        NavBar
+    },
     data() {
         return {
             formData: {

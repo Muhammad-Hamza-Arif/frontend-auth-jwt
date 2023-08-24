@@ -5,6 +5,7 @@ import GetAll from "../components/GetAll.vue"
 import AddMovies from "../components/AddMovies.vue"
 import AllMovies from "../components/AllMovies.vue"
 import EditMovie from "../components/EditMovie.vue"
+import ChangePassword from "../components/ChangePassword.vue"
 
 const routes = [
   {
@@ -35,6 +36,10 @@ const routes = [
   {
     path:'/edit/:id',
     component: EditMovie
+  },
+  {
+    path:'/editPassword/:id',
+    component: ChangePassword
   }
 ]
 

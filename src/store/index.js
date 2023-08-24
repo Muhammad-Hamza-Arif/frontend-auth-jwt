@@ -7,6 +7,7 @@ export default createStore({
       allMovies: [],
     },
     token: null,
+    userId: null,
   },
   getters: {
     getMovieList(state) {
@@ -14,8 +15,8 @@ export default createStore({
     },
   },
   mutations: {
-    UPDATE_MOVIE(state,id,data){
-      state.movie.allMovies.splice(id,1,data)
+    UPDATE_MOVIE(state, id, data) {
+      state.movie.allMovies.splice(id, 1, data);
     },
     SET_MOVIE_LIST(state, payload) {
       state.movie.allMovies = payload;
@@ -42,6 +43,7 @@ export default createStore({
         "http://localhost:3000/users/authenticate",
         payload
       );
+      this.state.userId = data.data.user._id;
       console.log("hello>>>>>>>>>> ", data);
       this.state.token = data.data.token;
       //  console.log('response ',response.data)
@@ -117,25 +119,37 @@ export default createStore({
         console.error("Error creating movie:", error);
       }
     },
-    async updateMovies({commit}, { indx, updateMovie }) {
-      console.log('idObj: ', indx)
-      console.log('PAyloaad : ',updateMovie)
+    async updateMovies({ commit }, { indx, updateMovie }) {
+      console.log("idObj: ", indx);
+      console.log("PAyloaad : ", updateMovie);
+      // commit("UPDATE_MOVIE",updateMovie)
       try {
         const token = this.state.token;
         // console.log('token---->', token)
         const config = {
           headers: {
-            'x-access-token': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-
+            "x-access-token": `Bearer ${token}`,
+            "Content-Type": "application/json",
+          },
         };
-  await axios.put(`http://localhost:3000/movies/${indx}`, updateMovie, config);
+        await axios.put(
+          `http://localhost:3000/movies/${indx}`,
+          updateMovie,
+          config
+        );
         // console.log('Movie updated:', data.data.movies);
         // commit('SET_MOVIE_LIST', data.data.movies)
       } catch (error) {
-        console.error('Error creating movie:', error);
+        console.error("Error creating movie:", error);
       }
+    },
+    async updatePassword(_, payload) {
+      console.log("payload in acton ChngePAss : ", payload);
+      const { data } = await axios.put(
+        `http://localhost:3000/users/${payload.id}`,
+        payload
+      );
+      console.log("Data in updatePAssword", data);
     },
   },
   modules: {},
