@@ -1,7 +1,14 @@
 <template>
     <div class="flex justify-between p-10 h-14 items-center text-2xl font-serif font-medium bg-indigo-500 text-white">
-       <router-link to="/">Movies</router-link>
-        <button @click="changePassword(id)">Change Password</button>
+       <div>
+        <router-link to="/">Movies</router-link>
+       </div>
+        <div>
+            <button @click="changePassword(id)" class="mr-12">Change Password</button>
+        <router-link to="">
+            <button>Cart</button>
+        </router-link>
+        </div>
     </div>
 </template>
 

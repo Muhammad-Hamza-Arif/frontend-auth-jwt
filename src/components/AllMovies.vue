@@ -7,9 +7,9 @@
         :key="index"
         class="bg-white rounded-md flex flex-col justify-around h-64 items-center"
       >
-          <h2 class="text-3xl block font-semibold">{{ item.name }}</h2>
-          <p class="text-gray-600">Released on {{ item.released_on }}</p>
-          <p>id:{{ item.id }}</p>
+        <h2 class="text-3xl block font-semibold">{{ item.name }}</h2>
+        <p class="text-gray-600">Released on {{ item.released_on }}</p>
+        <p>id:{{ item.id }}</p>
         <div class="grid grid-cols-2 gap-8">
           <div>
             <button
@@ -30,10 +30,12 @@
         </div>
       </div>
     </div>
-    <div class="px-4 py-2 border text-white text-center border-white mx-auto outline-2 rounded-md w-56 text-xl hover:bg-white hover:text-black font-medium mt-5">
-       <router-link to="/usercreation" class="">
+    <div
+      class="px-4 py-2 border text-white text-center border-white mx-auto outline-2 rounded-md w-56 text-xl hover:bg-white hover:text-black font-medium mt-5"
+    >
+      <router-link to="/usercreation" class="">
         <button>Back</button>
-       </router-link>
+      </router-link>
     </div>
   </div>
 </template>

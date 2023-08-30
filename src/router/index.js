@@ -7,6 +7,10 @@ import AllMovies from "../components/AllMovies.vue"
 import EditMovie from "../components/EditMovie.vue"
 import ChangePassword from "../components/ChangePassword.vue"
 import UserCreation from "../components/UserCreation.vue"
+import AdminPanel from "../components/AdminPanel.vue"
+import EditRole from "../components/EditRole.vue"
+import UserFunctionality from "../components/UserFunctinality.vue"
+import UserPanel from "../components/UserPanel.vue"
 
 const routes = [
   {
@@ -46,6 +50,23 @@ const routes = [
   {
     path:'/editPassword/:id',
     component: ChangePassword
+  },
+  {
+    path:'/adminpanel',
+    name: 'adminpanel',
+    component: AdminPanel
+  },
+  {
+    path: '/editRole/:id',
+    component: EditRole
+  },
+  {
+    path: '/userfunctionality',
+    component: UserFunctionality
+  },
+  {
+    path: '/userpanel',
+    component: UserPanel
   }
 ]
 
