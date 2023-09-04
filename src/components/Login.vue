@@ -26,15 +26,6 @@
           placeholder="Enter Password..."
         />
       </div>
-      <!-- <div class="mt-3 flex justify-between items-center">
-        <div>
-          <input type="checkbox" />
-          <label for="">Remember Me</label>
-        </div>
-        <div>
-          <a href="" class="text-indigo-800 font-semibold">Forgot Password?</a>
-        </div>
-      </div> -->
       <div class="mt-5 flex justify-between">
         <button
           class="border-2 border-indigo-700 bg-indigo-700 text-white px-4 py-2 rounded-md"
@@ -55,8 +46,8 @@
 </template>
 
 <script>
-import router from '@/router';
-import { mapActions,mapGetters } from "vuex";
+import router from "@/router";
+import { mapActions, mapGetters } from "vuex";
 export default {
   name: "Login",
   data() {
@@ -69,19 +60,22 @@ export default {
   },
   methods: {
     ...mapActions({ userAuthentication: "userAuthentication" }),
-    userAuthenticationFunc(obj){
-      this.userAuthentication(obj)
-      if(this.getToken && this.getRole == "user"){
-        router.push("/userPanel")
+     userAuthenticationFunc(obj) {
+     this.userAuthentication(obj);
+      console.log("in the userSuthentic ate function")
+      if (this.getToken && this.getRole == "user") {
+      console.log("in the user ate function")
+        this.$router.push("/userPanel");
       }
-      if(this.getToken && this.getRole == "admin"){
-        router.push("/allmovies")
+      if (this.getToken && this.getRole == "Admin") {
+      console.log("in the admin ate function")
+        this.$router.push("/allmovies");
       }
-    }
+    },
   },
-  computed:{
-...mapGetters({getRole:"getRole",getToken:"getToken"})
-  }
+  computed: {
+    ...mapGetters({ getRole: "getRole", getToken: "getToken" }),
+  },
 };
 </script>
 

@@ -19,14 +19,6 @@
                 <button type="submit"
                 class="border-2 border-indigo-700 bg-indigo-700 text-white px-4 py-2 rounded-md w-full">Submit</button>
             </div>
-            <!-- <router-link to="/allmovies">
-
-                <div>
-            <button type="submit"
-                class="bg-indigo-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-indigo-600 focus:outline-none focus:bg-indigo-600">All
-                Movies</button>
-        </div>
-            </router-link> -->
         </form>
     </div>
 </template>

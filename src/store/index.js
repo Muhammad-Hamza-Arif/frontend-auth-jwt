@@ -3,9 +3,9 @@ import axios from "axios";
 
 export default createStore({
   state: {
-    card:{
+    card: {
       userId: null,
-      items:[]       
+      items: [],
     },
     movie: {
       allMovies: [],
@@ -13,20 +13,19 @@ export default createStore({
     alluser: [],
     token: null,
     userId: null,
-    role: null
+    role: null,
   },
 
   getters: {
-
     getMovieList(state) {
       return state.movie.allMovies;
     },
 
-    getToken(state){
+    getToken(state) {
       return state.token;
     },
 
-    getUserCard(state){
+    getUserCard(state) {
       return state.movie.allMovies;
     },
 
@@ -34,16 +33,16 @@ export default createStore({
       return state.alluser;
     },
 
-    getRole(state){
+    getRole(state) {
       return state.role;
-    }
-
-  },
-  
-  mutations: {
-    ROLE_SAVE(state,payload){
-       state.role = payload;
     },
+  },
+
+  mutations: {
+    ROLE_SAVE(state, payload) {
+      state.role = payload;
+    },
+    
     ALL_USERS(state, payload) {
       state.alluser = payload;
     },
@@ -54,7 +53,7 @@ export default createStore({
 
     SET_MOVIE_LIST(state, payload) {
       state.movie.allMovies = payload;
-      state.card.items = payload
+      state.card.items = payload;
     },
 
     REMOVE_MOVIE(state, id) {
@@ -63,11 +62,9 @@ export default createStore({
         (movie) => movie.id !== id
       );
     },
-
   },
 
   actions: {
-
     async registerUser(_, payload) {
       console.log("PAyloadc in action >>>>>>>>>>", payload);
       const response = await axios.post(
@@ -77,7 +74,7 @@ export default createStore({
       console.log(response.data);
     },
 
-    async userAuthentication({commit}, payload) {
+    async userAuthentication({ commit }, payload) {
       console.log("PAy in action >>>>>>>>>>", payload);
       const { data } = await axios.post(
         "http://localhost:3000/users/authenticate",
@@ -86,9 +83,8 @@ export default createStore({
       this.state.userId = data.data.user._id;
       this.state.card.userId = data.data.user._id;
       console.log("hello>>>>>>>>>> ", data.data.user.role);
-      commit("ROLE_SAVE",data.data.user.role)
+      commit("ROLE_SAVE", data.data.user.role);
       this.state.token = data.data.token;
-      //  console.log('response ',response.data)
       axios.defaults.headers.common[
         "Authorization"
       ] = `Bearer ${this.state.token}`;
@@ -159,7 +155,6 @@ export default createStore({
           `http://localhost:3000/movies/${payload.id}`,
           config
         );
-        // console.log('Movie updated:', response);
         this.state.movie.allMovies.splice(payload.index, 1);
       } catch (error) {
         console.error("Error creating movie:", error);
@@ -169,10 +164,8 @@ export default createStore({
     async updateMovies({ commit }, { indx, updateMovie }) {
       console.log("idObj: ", indx);
       console.log("PAyloaad : ", updateMovie);
-      // commit("UPDATE_MOVIE",updateMovie)
       try {
         const token = this.state.token;
-        // console.log('token---->', token)
         const config = {
           headers: {
             "x-access-token": `Bearer ${token}`,
@@ -184,8 +177,6 @@ export default createStore({
           updateMovie,
           config
         );
-        // console.log('Movie updated:', data.data.movies);
-        // commit('SET_MOVIE_LIST', data.data.movies)
       } catch (error) {
         console.error("Error creating movie:", error);
       }
@@ -216,8 +207,7 @@ export default createStore({
       );
       console.log("Data in updateRole", data);
     },
-
   },
-  
+
   modules: {},
 });
